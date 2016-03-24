@@ -24,7 +24,7 @@ public class MainPruebaBD {
         String sql="";
         conexion=objBases.crearConexion();
         if(conexion){
-            sql="insert into profesores (identificacion, nombre, apellido, telefono) values('11345','Carlos','Pelaez', '32133')";
+            sql="insert into profesores (identificacion, nombre, apellido, telefono) values('4567','Pedro','Benavides', '12121')";
             objBases.ejecutarSQL(sql);
             System.out.println("conexión exitosa");
         }else{
