@@ -6,6 +6,7 @@
 package behind;
 
 import basedatos.BaseDatos;
+import java.awt.Image;
 import java.util.ArrayList;
 
 /**
@@ -21,11 +22,12 @@ public class Estudiante {
     private String telefonoestudiante;
     private String direccionestudiante;
     private String correoestudiante;
+    private String rutaImagenestudiante;
 
     public Estudiante() {
     }
 
-    public Estudiante(String idestudiantes, String codigoestudiante, String nombreestudiante, String apellidoestudiante, String telefonoestudiante, String direccionestudiante, String correoestudiante) {
+    public Estudiante(String idestudiantes, String codigoestudiante, String nombreestudiante, String apellidoestudiante, String telefonoestudiante, String direccionestudiante, String correoestudiante,String imagenestudiante) {
         this.idestudiantes = idestudiantes;
         this.codigoestudiante = codigoestudiante;
         this.nombreestudiante = nombreestudiante;
@@ -33,6 +35,7 @@ public class Estudiante {
         this.telefonoestudiante = telefonoestudiante;
         this.direccionestudiante = direccionestudiante;
         this.correoestudiante=correoestudiante;
+        this.rutaImagenestudiante=imagenestudiante;
     }
 
     /**
@@ -43,6 +46,15 @@ public class Estudiante {
     public String getCorreoestudiante() {
         return correoestudiante;
     }
+
+    public String getRutaImagenestudiante() {
+        return rutaImagenestudiante;
+    }
+
+    public void setRutaImagenestudiante(String rutaImagenestudiante) {
+        this.rutaImagenestudiante = rutaImagenestudiante;
+    }
+
 
     /**
      * Set the value of correoestudiante
@@ -178,23 +190,20 @@ public class Estudiante {
         boolean conexion=false;
         boolean insertar=false;
         
-        for (int i = 0; i < arrEst.size(); i++) {
-            sql="INSERT INTO ESTUDIANTES VALUES('"+arrEst.get(i).getIdestudiantes()+"', '"+
-                arrEst.get(i).getCodigoestudiante()+"', '"+arrEst.get(i).getNombreestudiante()+"', '"+
-                arrEst.get(i).getApellidoestudiante()+"', '"+
-                arrEst.get(i).getTelefonoestudiante()+"', '"+
-                arrEst.get(i).getDireccionestudiante()+"', '"+
-                arrEst.get(i).getCorreoestudiante()+"')";
-            
+        sql="INSERT INTO ESTUDIANTES (idestudiantes,codigoestudiante,nombreestudiante,apellidoestudiante,telefonoestudiante,direccionestudiante,correoestudiante,imagenestudiante) VALUES(?,?,?,?,?,?,?,?)";
+        
+        for (Estudiante arrEst1 : arrEst) {
             conexion=objBases.crearConexion();
             if (conexion) {
-                insertar=objBases.ejecutarSQL(sql);
+                insertar = objBases.sqlInsertWithImageEstudiante(arrEst1.getRutaImagenestudiante(), sql, 
+                        arrEst1.getIdestudiantes(), arrEst1.getCodigoestudiante(), arrEst1.getNombreestudiante(), 
+                        arrEst1.getApellidoestudiante(), arrEst1.getTelefonoestudiante(), arrEst1.getDireccionestudiante(), 
+                        arrEst1.getCorreoestudiante());
             }
         }
-        
-        
-        
         return insertar;
     }
+    
+    
     
 }
