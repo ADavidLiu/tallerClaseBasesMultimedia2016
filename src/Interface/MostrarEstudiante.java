@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -253,6 +254,8 @@ public class MostrarEstudiante extends javax.swing.JFrame {
             if (conexion) {
                 arr = objbases.buscarCodigo(buscarpor);
 
+                if(!arr.isEmpty()){
+                
                 jTextField1.setText(arr.get(0).toString());
                 jTextField2.setText(arr.get(2).toString());
                 jTextField3.setText(arr.get(1).toString());
@@ -261,7 +264,9 @@ public class MostrarEstudiante extends javax.swing.JFrame {
                 jTextField6.setText(arr.get(5).toString());
                 jTextField7.setText(arr.get(6).toString());
                  jLabel9.setIcon(new javax.swing.ImageIcon((Image)arr.get(7)));
-
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "El Estudiante no se encuentra registrado!!!!.");
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(MostrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
