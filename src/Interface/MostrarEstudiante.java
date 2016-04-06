@@ -263,7 +263,7 @@ public class MostrarEstudiante extends javax.swing.JFrame {
                 jTextField5.setText(arr.get(4).toString());
                 jTextField6.setText(arr.get(5).toString());
                 jTextField7.setText(arr.get(6).toString());
-                 jLabel9.setIcon(new javax.swing.ImageIcon((Image)arr.get(7)));
+                jLabel9.setIcon(new javax.swing.ImageIcon((Image)arr.get(7)));
                 }else{
                     JOptionPane.showMessageDialog(rootPane, "El Estudiante no se encuentra registrado!!!!.");
                 }

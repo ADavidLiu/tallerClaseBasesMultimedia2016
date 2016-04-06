@@ -7,7 +7,11 @@ package behind;
 
 import basedatos.BaseDatos;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -116,6 +120,14 @@ public class Estudiante {
     @Override
     public String toString() {
         return "Estudiante{" + "idestudiantes=" + idestudiantes + ", codigoestudiante=" + codigoestudiante + ", nombreestudiante=" + nombreestudiante + ", apellidoestudiante=" + apellidoestudiante + ", telefonoestudiante=" + telefonoestudiante + ", direccionestudiante=" + direccionestudiante + ", correoestudiante=" + correoestudiante + '}';
+    }
+    
+    public String updateEstudiante(String id, String code, String name, String lastnm, String tel, String address, String email) {
+        String sql = "UPDATE estudiantes SET idestudiantes = '" + id + "', codigoestudiante = '" + code + 
+                "', nombreestudiante = '" + name + "', apellidoestudiante = '" + lastnm + "', telefonoestudiante = '" +
+                tel + "', direccionestudiante = '" + address + "', correoestudiante = '" + email + "' where codigoestudiante = '" + code + "'";
+        JOptionPane.showMessageDialog(null, "Información actualizada");
+        return sql;
     }
 
     public boolean insertarEstudiante(ArrayList<Estudiante> arrEst){
