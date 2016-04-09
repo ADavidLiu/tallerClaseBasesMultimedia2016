@@ -443,6 +443,8 @@ public class InsertarProfesor extends javax.swing.JFrame {
     BaseDatos objbases;
     Profesores profesor;
     private void insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarActionPerformed
+        objbases = new BaseDatos();
+        objbases.crearConexion();
         String id = jTextField8.getText();
         String name = jTextField9.getText();
         String lastnm = jTextField11.getText();
@@ -450,9 +452,10 @@ public class InsertarProfesor extends javax.swing.JFrame {
         String address = jTextField13.getText();
         String telefono = jTextField10.getText();
         String type = jTextField14.getText();
-        profesor = new Profesores(id, name, lastnm, email, address, telefono, type);
-        profesor.insertProfesor();
-        objbases.ejecutarSQL(profesor);
+        profesor = new Profesores(name, lastnm, id, telefono, address, email, type);
+        String sql = profesor.insertProfesor();
+        System.out.println(sql);
+        objbases.ejecutarSQL(sql);
     }//GEN-LAST:event_insertarActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed

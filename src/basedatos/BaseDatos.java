@@ -5,7 +5,6 @@ package basedatos;
  * @author Alejo
  */
 import Controller.Imagen;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -45,7 +44,7 @@ public class BaseDatos {
     public boolean crearConexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");                                      //user  //pass
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/uao", "root", "root");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/uao", "root", "Simsklapaucius96");
             st = conexion.createStatement();
         } catch (SQLException ex) {
             ex.printStackTrace();

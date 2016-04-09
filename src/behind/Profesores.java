@@ -35,9 +35,9 @@ public class Profesores {
     }
     
     public String insertProfesor(){
-        String sql = "INSERT INTO profesores (identificacion, nombrep, apellidop, telefonop, direccionp, correop, tipovinculacionp)"
-                + "values(" + identificacion + ", " + nombrep + ", " + apellidop + ", " + telefonop + ", " + direccionp + ", "
-                + correop + ", " + tipovinculacionp + ")";
+        String sql = "INSERT INTO profesores (identificacion, nombrep, apellidop, telefonop, direccionp, correop, tipovinculacionp) "
+                + "values ('" + identificacion + "', '" + nombrep + "', '" + apellidop + "', '" + telefonop + "', '" + direccionp + "', '"
+                + correop + "', '" + tipovinculacionp + "')";
         JOptionPane.showMessageDialog(null, "Profesor añadido");
         return sql;
     }

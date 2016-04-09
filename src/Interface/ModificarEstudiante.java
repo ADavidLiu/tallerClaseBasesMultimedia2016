@@ -12,11 +12,8 @@ import behind.Estudiante;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -281,7 +278,7 @@ public class ModificarEstudiante extends javax.swing.JFrame {
                 
                 estudiante = new Estudiante(arr.get(0).toString(), arr.get(2).toString(), arr.get(1).toString(), arr.get(3).toString(), arr.get(4).toString(), arr.get(5).toString(), arr.get(6).toString(), arr.get(7).toString());
                 
-                }else{
+                } else{
                     JOptionPane.showMessageDialog(rootPane, "El Estudiante no se encuentra registrado!!!!. Primero ejecute la opción de registro.");
                 }
             }
