@@ -78,6 +78,14 @@ public class BaseDatos {
         return true;
     }
 
+    public Statement getSt() {
+        return st;
+    }
+
+    public void setSt(Statement st) {
+        this.st = st;
+    }
+
     /**
      *
      * Método utilizado para realizar la instrucción SELECT
@@ -228,7 +236,6 @@ public class BaseDatos {
         String cadena = "";
         try {
             ResultSet rs = st.executeQuery("SELECT * FROM estudiantes WHERE codigoestudiante=" + buscarpor + "");
-            
             
             while (rs.next()) {
                 Imagen imagen = new Imagen();

@@ -6,7 +6,12 @@
 package behind;
 
 import basedatos.BaseDatos;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -124,6 +129,23 @@ public class Estudiante {
                 tel + "', direccionestudiante = '" + address + "', correoestudiante = '" + email + "' where codigoestudiante = '" + code + "'";
         JOptionPane.showMessageDialog(null, "Información actualizada");
         return sql;
+    }
+    
+    public ArrayList buscarCursos(String codigoBuscado, BaseDatos objBases) {
+        String sql = "SELECT nombreCurso from estudiantes e, matriculas m, cursos c where e.codigoestudiante = m.codigoestudiantem and m.codigoestudiantem = '" + 
+                codigoBuscado + "'";
+        ArrayList cursos = new ArrayList();
+        objBases.crearConexion();
+        try {
+            ResultSet rs = objBases.getSt().executeQuery(sql);
+            while(rs.next()) {
+                String nombreCurso = rs.getObject("nombreCurso").toString();
+                cursos.add(nombreCurso);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Estudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cursos;
     }
 
     public boolean insertarEstudiante(ArrayList<Estudiante> arrEst){
